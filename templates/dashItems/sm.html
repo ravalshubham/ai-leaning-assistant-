@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnBot - AI Study Assistant</title>
+    <link rel="stylesheet" href="{% static 'css/sm.css' %}">
+
+    <!-- ✅ Load Marked.js (Markdown Parser) *BEFORE* script.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+
+    <!-- ✅ Load KaTeX (For LaTeX Math Equations) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">My Dashboard</div>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">🏠 Home</a></li>
+            <li><a href="{% url 'sm' %}">📚 Study Material</a></li>
+            <li><a href="{% url 'qa' %}">💬 Q&A</a></li>
+            <li><a href="{% url 'quiz' %}">📝 Quiz</a></li>
+            <li><a href="{% url 'profile' %}">🧑‍💻 Profile</a></li>
+            <li><a href="{% url 'logout' %}">📊 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>AI-Powered Learning Material Generator 📚</h1>
+
+        <div class="input-section">
+            <input type="text" id="topicInput" placeholder="Enter study topic (e.g., Machine Learning)">
+            <button id="generateBtn">Generate Materials</button>
+        </div>
+
+        <p id="loadingMessage" style="display: none;">⏳ Generating materials, please wait...</p>
+
+        <div class="output-section" id="outputSection" style="display: none;">
+            <h2>Generated Study Material</h2>
+            <div id="studyContent"></div>
+            <!-- Download PDF Button (Initially Hidden) -->
+<button id="downloadBtn" class="btn download-btn" style="display: none;">📥 Download Study Material PDF</button>
+
+        </div>
+    </div>
+
+    <!-- ✅ Load KaTeX JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+    <!-- ✅ Load jsPDF Library for PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+    <!-- ✅ Load script.js AFTER Marked.js -->
+    <script src="{% static 'js/sm.js' %}"></script>
+
+</body>
+</html>

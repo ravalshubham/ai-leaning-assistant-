@@ -1,0 +1,237 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Background Image with Opacity */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/static/images/sm.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.6; /* Adjust this value (0.0 - 1.0) for transparency */
+    z-index: -1; /* Keeps the background behind content */
+}
+
+/* Main Container */
+.container {
+    max-width: none;
+    width: calc(100% - 250px);
+    margin: 0;
+    margin-left: 250px; /* Exactly match sidebar width */
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+/* Make it responsive */
+@media (max-width: 1024px) {
+    .container {
+        width: calc(100% - 250px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        margin-top: 60px;
+        width: 100%;
+        position: relative;
+        padding: 15px;
+        max-height: none;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        padding-top: 10px;
+        z-index: 1050; /* Increased z-index for mobile too */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for visual separation */
+    }
+    
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .sidebar ul li {
+        padding: 5px 10px;
+        margin: 2px;
+    }
+}
+
+/* Input Section */
+.input-section {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    padding: 12px;
+    width: 60%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Apply box-shadow when the input is focused */
+input:focus {
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue glow effect */
+    border-color: #007bff; /* Highlight border */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #266aa4, #52eff7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #52eff7, #266aa4);
+}
+
+/* Output Section */
+.output-section {
+    text-align: left;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Proper Formatting for Generated Answer */
+#studyContent {
+    font-size: 1.1em;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Styling Key Sections */
+#studyContent h2 {
+    color: #4a90e2;
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+#studyContent ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#studyContent ul li {
+    margin-bottom: 5px;
+}
+
+/* LaTeX Styling */
+.katex {
+    font-size: 1.2em !important;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #266aa4 0%, #52eff7 100%);
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1050; /* Increased z-index to ensure it's always on top */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for visual separation */
+}
+
+.sidebar .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    transition: color 0.3s;
+    font-size: larger;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.sidebar ul li a:hover {
+    color: #fff;
+}
+
+/* Style for Download PDF Button */
+.download-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #266aa4, #52eff7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    margin-top: 15px;
+}
+
+.download-btn:hover {
+    background: linear-gradient(90deg, #52eff7, #266aa4);
+    transform: scale(1.05);
+}

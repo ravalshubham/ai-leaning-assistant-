@@ -1,0 +1,386 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background: #f0f8ff; /* Light background */
+    color: #333;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add particle-like background effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(rgba(38, 106, 164, 0.1) 1px, transparent 1px),
+        radial-gradient(rgba(38, 106, 164, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    z-index: -1;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #266aa4 0%, #52eff7 100%);
+    color: white;
+    padding-top: 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1050; /* Increased z-index to ensure it's always on top */
+    transition: all 0.3s ease;
+}
+
+.sidebar .logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ffffff, #f0fdfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.sidebar ul li {
+    padding: 12px 25px;
+    margin: 8px 0;
+    border-radius: 0 30px 30px 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.sidebar ul li a:hover {
+    color: #fff;
+}
+
+/* Main Content */
+.main-content {
+    padding: 30px;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    min-height: 100vh;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #266aa4;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #266aa4, #52eff7);
+    border-radius: 2px;
+}
+
+/* Timer & Task Sections */
+.dashboard-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.box, .task-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 320px;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.box::before, .task-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #266aa4, #52eff7);
+    z-index: 1;
+}
+
+.box:hover, .task-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.box h2, .task-container h2 {
+    color: #266aa4;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.task-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #54d0e8;
+    background: #f8f9fa;
+    color: #333;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 12px 0;
+    transition: all 0.3s ease;
+}
+
+.box input {
+    margin: 12px 0;
+    padding: 12px 15px;
+    width: 100%;
+    border: 2px solid #54d0e8;
+    background: #f8f9fa;
+    color: #333;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.task-container input:focus, .box input:focus {
+    border-color: #266aa4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(38, 106, 164, 0.3);
+}
+
+.task-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.task-container li {
+    background: #f0f8ff;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.task-container li:hover {
+    background: #e6f2ff;
+}
+
+.task-container li span {
+    flex-grow: 1;
+    margin-left: 10px;
+    text-align: left;
+    color: #333;
+}
+
+.task-container input[type="checkbox"] {
+    transform: scale(1.3);
+    margin-right: 10px;
+    accent-color: #266aa4;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg, #266aa4, #54d0e8);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #54d0e8, #266aa4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Study Section */
+.study-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.study-btn {
+    font-size: 18px;
+    padding: 15px 30px;
+    width: auto;
+    max-width: 300px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, #266aa4, #52eff7);
+}
+
+.study-btn:hover {
+    background: linear-gradient(90deg, #52eff7, #266aa4);
+}
+
+#timer {
+    font-size: 24px;
+    font-weight: 600;
+    color: #266aa4;
+    margin-top: 20px !important;
+}
+
+/* Exercise Popup */
+#exercisePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    text-align: center;
+}
+
+#exerciseTitle {
+    color: #266aa4;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#exerciseInstruction {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#exerciseGif {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#nextBtn {
+    background: linear-gradient(90deg, #266aa4, #54d0e8);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#nextBtn:hover {
+    background: linear-gradient(90deg, #54d0e8, #266aa4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#nextBtn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 80px 15px 30px;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        position: fixed;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+    }
+
+    .sidebar ul li {
+        margin: 0 8px;
+        padding: 8px 15px;
+    }
+
+    .box, .task-container {
+        width: 100%;
+    }
+
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

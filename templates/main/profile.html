@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Update</title>
+  {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lora:wght@400;700&amp;family=Montserrat:wght@400;500;600;700&amp;family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/aos/dist/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/choices.js/public/assets/styles/choices.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/flickity-fade/flickity-fade.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/flickity/dist/flickity.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/highlightjs/styles/vs2015.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/jarallax/dist/jarallax.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/quill/dist/quill.core.css' %}" />
+
+    <!-- Map -->
+    <link href='../../../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+
+<!--    <title>BMS-EL | {% block title %}{% endblock %}</title>-->
+    <script src="https://kit.fontawesome.com/6bdd1f9bf7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    html, body {
+            margin-left: 100px;
+            padding: 0;
+            align-items: center;
+            overflow-x: hidden;
+    }
+    /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #266aa4 0%, #52eff7 100%);
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar .logo {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 20px 0;
+            text-align:left;
+        }
+        .sidebar ul li {
+            padding: 15px 20px;
+            transition: background 0.3s;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: block;
+            transition: color 0.3s;
+            font-size: larger;
+            text-align:left;
+        }
+        .sidebar ul li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        .sidebar ul li a:hover {
+            color: #fff;
+        }
+</style>
+</head>
+<body>
+
+<header class="py-8 py-md-11 pb-5" style="
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-taobao-vector-cartoon-neat-study-desk-table-home-illustration-table-lamp-image_130341.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-blend-mode: overlay; ">
+  <div class="container text-center py-xl-2">
+    <h1 class="display-4 text-black fw-semi-bold mb-0">Profile Update</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+        <li class="breadcrumb-item">
+          <a href="#" class="text-black">Home</a>
+        </li>
+        <li class="breadcrumb-item text-black active" aria-current="page">
+          Profile Update
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <!-- IMG -->
+  <img class="d-none img-fluid" src="...html" alt="..." />
+</header>
+<div class="sidebar">
+        <div class="logo" >My Dashboard</div>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">🏠 Home</a></li>
+            <li><a href="{% url 'sm' %}">📚 Study Material</a></li>
+            <li><a href="{% url 'qa' %}">💬 Q&A</a></li>
+            <li><a href="{% url 'quiz' %}">📝 Quiz</a></li>
+            <li><a href="{% url 'profile' %}">🧑‍💻 Profile</a></li>
+            <li><a href="{% url 'logout' %}">📊 Logout</a></li>
+        </ul>
+    </div>
+
+<!-- card -->
+
+<div class="card pt-4" style="width: 80%; margin-left: 10%">
+  {% include 'components/msg.html' %}
+
+  <div class="card-body">
+    <form action="{% url 'profile_update' %}" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col">
+          <div class="form-group mb-4">
+            <label>First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter First Name"
+              name="first_name"
+              value="{{user.first_name}}"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group mb-4">
+            <label>Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Last Name"
+              name="last_name"
+              value="{{user.last_name}}"
+            />
+          </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <div class="form-group mb-4">
+            <label>Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter Email"
+              name="email"
+              value="{{user.email}}"
+              readonly
+            />
+          </div>
+        </div>
+<!--        <div class="col">-->
+<!--          <div class="form-group mb-4">-->
+<!--            <label>Username</label>-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              class="form-control"-->
+<!--              placeholder="Enter Username"-->
+<!--              name="username"-->
+<!--              value="{{user.username}}"-->
+<!--              readonly-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="col-12">
+          <div class="form-group mb-4">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Fill only if you want to change password!!!"
+              name="password"
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="background: linear-gradient(90deg, #266aa4, #52eff7); border: none;">Update Profile</button>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/libs/aos/dist/aos.js' %}"></script>
+    <script src="{% static 'assets/libs/choices.js/public/assets/scripts/choices.min.js' %}"></script>
+    <script src="{% static 'assets/libs/countup.js/dist/countUp.min.js' %}"></script>
+    <script src="{% static 'assets/libs/dropzone/dist/min/dropzone.min.js' %}"></script>
+    <script src="{% static 'assets/libs/flickity/dist/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/libs/flickity-fade/flickity-fade.js' %}"></script>
+    <script src="{% static 'assets/libs/highlightjs/highlight.pack.min.js' %}"></script>
+    <script src="{% static 'assets/libs/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/libs/isotope-layout/dist/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/libs/jarallax/dist/jarallax.min.js' %}"></script>
+    <script src="{% static 'assets/libs/jarallax/dist/jarallax-video.min.js' %}"></script>
+    <script src="{% static 'assets/libs/jarallax/dist/jarallax-element.min.js' %}"></script>
+    <script src="{% static 'assets/libs/parallax-js/dist/parallax.min.js' %}"></script>
+    <script src="{% static 'assets/libs/quill/dist/quill.min.js' %}"></script>
+    <script src="{% static 'assets/libs/smooth-scroll/dist/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'assets/libs/typed.js/lib/typed.min.js' %}"></script>
+
+    <!-- Map -->
+    <script src='../../../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Theme JS -->
+    <script src="{% static 'assets/js/theme.min.js' %}"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+</html>

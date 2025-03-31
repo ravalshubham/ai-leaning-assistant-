@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">My Dashboard</div>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">🏠 Home</a></li>
+            <li><a href="{% url 'sm' %}">📚 Study Material</a></li>
+            <li><a href="{% url 'qa' %}">💬 Q&A</a></li>
+            <li><a href="{% url 'quiz' %}">📝 Quiz</a></li>
+            <li><a href="{% url 'profile' %}">🧑‍💻 Profile</a></li>
+            <li><a href="{% url 'logout' %}">📊 Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome to your dashboard. Manage your study sessions efficiently.</p>
+
+        <!-- Timers & Task Setter -->
+        <div class="dashboard-container">
+            <!-- Reminder Timer -->
+            <div class="box">
+                <h2>⏰ Set a Reminder Time</h2>
+                <input type="time" id="timeInput">
+                <button onclick="setReminderTime()" class="btn">Set Time</button>
+                <p style="margin-top: 10px;" id="countdown">No time set yet.</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="box">
+                <h2>⏳ Set a Countdown Timer</h2>
+                <input type="number" id="minutesInput" placeholder="Enter minutes" min="1">
+                <button onclick="startCountdownTimer()" class="btn">Start Timer</button>
+                <p style="margin-top: 10px;" id="minuteCountdown">No timer set.</p>
+            </div>
+
+            <!-- Task Setter -->
+            <div class="task-container">
+                <h2>📋 Task Setter</h2>
+                <input type="text" id="taskInput" placeholder="Enter a task">
+                <button onclick="addTask()" class="btn">Add Task</button>
+                <ul id="taskList"></ul>
+            </div>
+        </div>
+
+        <!-- Start Study Session -->
+        <div class="study-section">
+            <button onclick="startStudyTimer()" class="btn study-btn">Start Study Session</button>
+            <p style="margin-top: 10px;" id="timer">⏳ Timer: Not Started</p>
+        </div>
+    </div>
+
+    <!-- Eye Exercise Popup -->
+    <div id="exercisePopup" style="display: none;">
+        <h3 id="exerciseTitle">Eye Exercise</h3>
+        <p id="exerciseInstruction"></p>
+        <img id="exerciseGif" src="" alt="Exercise GIF">
+        <button id="nextBtn" onclick="nextInstruction()">Next</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
+
+    <audio id="alarmSound" src="https://www.myinstants.com/media/sounds/beep.mp3"></audio>
+
+</body>
+</html>

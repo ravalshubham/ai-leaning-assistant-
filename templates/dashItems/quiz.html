@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz Generator</title>
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+    {% csrf_token %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">My Dashboard</div>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">🏠 Home</a></li>
+            <li><a href="{% url 'sm' %}">📚 Study Material</a></li>
+            <li><a href="{% url 'qa' %}">💬 Q&A</a></li>
+            <li><a href="{% url 'quiz' %}">📝 Quiz</a></li>
+            <li><a href="{% url 'profile' %}">🧑‍💻 Profile</a></li>
+            <li><a href="{% url 'logout' %}">📊 Logout</a></li>
+        </ul>
+    </div>
+    <div class="quiz-container">
+        <h1>🎯 AI Quiz Generator</h1>
+
+        <!-- Input Text for Quiz Generation -->
+        <textarea style="align-content: center;" id="quizTopic" placeholder="Enter topic or content to generate quiz..." ></textarea>
+        
+        <!-- New input field for number of questions -->
+        <input type="number" id="numQuestions" placeholder="Enter number of questions" min="1" max="50" >
+
+        <button id="generateQuizBtn">Generate Quiz</button>
+
+        <!-- Display Quiz -->
+        <div id="quizSection" class="quiz-section" style="display: none;"></div>
+
+        <!-- Display Score -->
+        <div id="quizResult" class="result" style="display: none;"></div>
+
+        <!-- Add container for the chart -->
+        <div id="chartContainer" style="display: none; text-align: center; margin-top: 20px;">
+            <h3>Quiz Performance</h3>
+            <img id="resultChart" alt="Quiz Results Chart" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+
+    <script src="{% static 'js/quiz.js' %}"></script>
+</body>
+</html>
